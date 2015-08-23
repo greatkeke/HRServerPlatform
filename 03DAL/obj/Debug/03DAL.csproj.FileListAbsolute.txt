@@ -1,0 +1,14 @@
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\03DAL.dll.config
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\03DAL.dll
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\03DAL.pdb
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\04Model.dll
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\EntityFramework.dll
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\EntityFramework.SqlServer.dll
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\04Model.pdb
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\EntityFramework.xml
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\EntityFramework.SqlServer.xml
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\ShellFile\HRServerPlatform\03DAL\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\ShellFile\HRServerPlatform\03DAL\obj\Debug\03DAL.csprojResolveAssemblyReference.cache
+F:\ShellFile\HRServerPlatform\03DAL\obj\Debug\03DAL.dll
+F:\ShellFile\HRServerPlatform\03DAL\obj\Debug\03DAL.pdb

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HRServerPlatformDBModelStoreContainer" CdmEntityContainer="HRServerPlatformDBEntities">
+    <EntitySetMapping Name="t_Categories">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_Categories">
+        <MappingFragment StoreEntitySet="t_Categories">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_ChatContent">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_ChatContent">
+        <MappingFragment StoreEntitySet="t_ChatContent">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_JobNews">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_JobNews">
+        <MappingFragment StoreEntitySet="t_JobNews">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_NewsEvalution">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_NewsEvalution">
+        <MappingFragment StoreEntitySet="t_NewsEvalution">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="EvalutionID" ColumnName="EvalutionID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Orders">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_Orders">
+        <MappingFragment StoreEntitySet="t_Orders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RequirementID" ColumnName="RequirementID" />
+          <ScalarProperty Name="AchievementID" ColumnName="AchievementID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="TurnoverDate" ColumnName="TurnoverDate" />
+          <ScalarProperty Name="StarNums" ColumnName="StarNums" />
+          <ScalarProperty Name="Evalute" ColumnName="Evalute" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Power">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_Power">
+        <MappingFragment StoreEntitySet="t_Power">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Power" ColumnName="Power" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Requirement">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_Requirement">
+        <MappingFragment StoreEntitySet="t_Requirement">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Gread" ColumnName="Gread" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Role">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_Role">
+        <MappingFragment StoreEntitySet="t_Role">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_RolePower">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_RolePower">
+        <MappingFragment StoreEntitySet="t_RolePower">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="PowerID" ColumnName="PowerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Session">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_Session">
+        <MappingFragment StoreEntitySet="t_Session">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RequirementID" ColumnName="RequirementID" />
+          <ScalarProperty Name="AchivementID" ColumnName="AchivementID" />
+          <ScalarProperty Name="SessionDate" ColumnName="SessionDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_User">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_User">
+        <MappingFragment StoreEntitySet="t_User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ShowInfo" ColumnName="ShowInfo" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_UserRole">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.t_UserRole">
+        <MappingFragment StoreEntitySet="t_UserRole">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table1">
+      <EntityTypeMapping TypeName="HRServerPlatformDBModel.Table1">
+        <MappingFragment StoreEntitySet="Table1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

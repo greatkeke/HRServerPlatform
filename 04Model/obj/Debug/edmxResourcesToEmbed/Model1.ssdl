@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRServerPlatformDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t_Categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_ChatContent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SessionID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_JobNews">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_NewsEvalution">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="NewsID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EvalutionID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Orders">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RequirementID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AchievementID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="TurnoverDate" Type="datetime" Nullable="false" />
+    <Property Name="StarNums" Type="int" />
+    <Property Name="Evalute" Type="nvarchar(max)" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Power">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Power" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_Requirement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gread" Type="int" />
+    <Property Name="PostID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CategoryID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="PostDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_RolePower">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PowerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Session">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RequirementID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AchivementID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SessionDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ShowInfo" Type="nvarchar(max)" />
+    <Property Name="Other" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_UserRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="HRServerPlatformDBModelStoreContainer">
+    <EntitySet Name="t_Categories" EntityType="Self.t_Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_ChatContent" EntityType="Self.t_ChatContent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_JobNews" EntityType="Self.t_JobNews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_NewsEvalution" EntityType="Self.t_NewsEvalution" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Orders" EntityType="Self.t_Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Power" EntityType="Self.t_Power" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Requirement" EntityType="Self.t_Requirement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Role" EntityType="Self.t_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_RolePower" EntityType="Self.t_RolePower" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Session" EntityType="Self.t_Session" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_User" EntityType="Self.t_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_UserRole" EntityType="Self.t_UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table1" EntityType="Self.Table1" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

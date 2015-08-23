@@ -3,6 +3,9 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using _04Model;
 using System.Linq;
+using _03DAL;
+using System.Threading;
+using System.Data.Entity;
 
 namespace _02BLL.Tests
 {
@@ -12,10 +15,23 @@ namespace _02BLL.Tests
         [TestMethod()]
         public void AddTest()
         {
-            var bll = new BaseBLL<t_Requirement>();
-            bll.Add(new t_Requirement() { ID = Guid.NewGuid(), CategoryID = Guid.NewGuid(), Title = "he", PostDate = DateTime.Now, PostID = Guid.NewGuid(), Content = "内容", Gread = 2, Status = 1 });
+            var bll = new BaseBLL<t_JobNews>();
+            var r1 = bll.Query(u => true).FirstOrDefault().Content;
+
+            var bll2 = new BaseBLL<t_JobNews>();
+            var r2 = bll2.Query(u => true).FirstOrDefault().Content;
+            Assert.AreEqual(true, r1 != r2);
 
 
+        }
+
+        [TestMethod()]
+        public void AddTest2()
+        {
+            Model1 db = new Model1();
+            var r1 = db.Set<t_JobNews>().FirstOrDefault();
+            var r2 = db.Set<t_JobNews>().FirstOrDefault();
+            Assert.AreEqual(true, r1 != r2);
         }
     }
 }

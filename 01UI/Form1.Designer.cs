@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.PageMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.关闭ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关闭右侧窗口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关闭其他窗口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -44,36 +44,40 @@
             // 
             this.PageMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.关闭ToolStripMenuItem,
-            this.关闭右侧窗口ToolStripMenuItem,
+            this.关闭其他窗口ToolStripMenuItem,
             this.刷新ToolStripMenuItem});
             this.PageMenu.Name = "PageMenu";
-            this.PageMenu.Size = new System.Drawing.Size(149, 70);
+            this.PageMenu.Size = new System.Drawing.Size(153, 92);
             // 
             // 关闭ToolStripMenuItem
             // 
             this.关闭ToolStripMenuItem.Name = "关闭ToolStripMenuItem";
-            this.关闭ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.关闭ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关闭ToolStripMenuItem.Text = "关闭";
             // 
-            // 关闭右侧窗口ToolStripMenuItem
+            // 关闭其他窗口ToolStripMenuItem
             // 
-            this.关闭右侧窗口ToolStripMenuItem.Name = "关闭右侧窗口ToolStripMenuItem";
-            this.关闭右侧窗口ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.关闭右侧窗口ToolStripMenuItem.Text = "关闭右侧窗口";
+            this.关闭其他窗口ToolStripMenuItem.Name = "关闭其他窗口ToolStripMenuItem";
+            this.关闭其他窗口ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关闭其他窗口ToolStripMenuItem.Text = "关闭其他窗口";
             // 
             // 刷新ToolStripMenuItem
             // 
             this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
-            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.刷新ToolStripMenuItem.Text = "刷新";
             // 
             // tabControl1
             // 
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.ItemSize = new System.Drawing.Size(100, 21);
             this.tabControl1.Location = new System.Drawing.Point(0, 100);
+            this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.ShowToolTips = true;
             this.tabControl1.Size = new System.Drawing.Size(1354, 573);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 7;
             // 
             // pictureBox1
@@ -112,7 +116,7 @@
         #endregion
         private System.Windows.Forms.ContextMenuStrip PageMenu;
         private System.Windows.Forms.ToolStripMenuItem 关闭ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 关闭右侧窗口ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 关闭其他窗口ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 刷新ToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.PictureBox pictureBox1;

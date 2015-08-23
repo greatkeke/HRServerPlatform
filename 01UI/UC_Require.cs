@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace _01UI
 {
-    public partial class UC_Require : UserControl
+    public partial class UC_Require : UserControl,IRefreshable
     {
         BaseBLL<t_Requirement> requireBll = new BaseBLL<t_Requirement>();
         /// <summary>
@@ -26,7 +26,8 @@ namespace _01UI
             try
             {
                 //获取数据
-                var source = requireBll.Query(u => u.PostDate >= DateTime.Now.AddDays(-3)).ConvertToRequireShowModel().OrderByDescending(u => u.PostDate).ToList();
+                var postDate = DateTime.Now.AddDays(-3);
+                var source = requireBll.Query(u => u.PostDate >= postDate).ConvertToRequireShowModel().OrderByDescending(u => u.PostDate).ToList();
                 this.dataGridView1.DataSource = source;
                 ID.DataPropertyName = "ID";
                 PostDate.DataPropertyName = "PostDate";
@@ -59,6 +60,11 @@ namespace _01UI
                 }
             }
 
+        }
+
+        public void Refresh(object obj)
+        {
+            UC_Require_Load(null, null);
         }
     }
     /// <summary>

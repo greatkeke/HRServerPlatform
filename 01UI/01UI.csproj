@@ -73,6 +73,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IRefreshable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequireEventArgs.cs" />
@@ -93,6 +94,12 @@
     </Compile>
     <Compile Include="UC_Require.Designer.cs">
       <DependentUpon>UC_Require.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ShowJobNews.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ShowJobNews.Designer.cs">
+      <DependentUpon>UC_ShowJobNews.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_ShowRequirementInfo.cs">
       <SubType>UserControl</SubType>
@@ -120,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Require.resx">
       <DependentUpon>UC_Require.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ShowJobNews.resx">
+      <DependentUpon>UC_ShowJobNews.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_ShowRequirementInfo.resx">
       <DependentUpon>UC_ShowRequirementInfo.cs</DependentUpon>

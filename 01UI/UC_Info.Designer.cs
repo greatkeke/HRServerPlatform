@@ -78,8 +78,8 @@
             // 
             // button2
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button2.Location = new System.Drawing.Point(9, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(370, 25);
             this.button2.TabIndex = 2;

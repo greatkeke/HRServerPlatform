@@ -50,6 +50,31 @@ namespace _01UI
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.WindowState = FormWindowState.Maximized;
             this.tabControl1.ContextMenuStrip = this.PageMenu;
+            this.关闭ToolStripMenuItem.Click += 关闭ToolStripMenuItem_Click;
+            this.关闭其他窗口ToolStripMenuItem.Click += 关闭其他窗口ToolStripMenuItem_Click;
+            this.刷新ToolStripMenuItem.Click += 刷新ToolStripMenuItem_Click;
+        }
+
+        private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var page = this.tabControl1.SelectedTab;
+            var uc = page.Controls[0] as IRefreshable;
+            uc.Refresh(page.Tag);
+        }
+
+        private void 关闭其他窗口ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var page = this.tabControl1.SelectedTab;
+            this.tabControl1.TabPages.Clear();
+            this.tabControl1.TabPages.Add(page);
+        }
+
+        private void 关闭ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //获取当前page
+            var index = this.tabControl1.SelectedIndex;
+            this.tabControl1.TabPages.RemoveAt(index);
+            this.tabControl1.SelectedIndex = index >= 1 ? index - 1 : 0;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -92,13 +117,16 @@ namespace _01UI
             uc.EvenShowRequirementInfo += Uc_EvenShowRequirementInfo;
             this.ShowPage(uc, "需求", "需求");
         }
-
+        /// <summary>
+        /// 双击展示需求详情
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Uc_EvenShowRequirementInfo(object sender, EventArgs e)
         {
             var arg = e as RequireEventArgs;
             if (arg != null)
             {
-                //展示页面
                 var uc = new UC_ShowRequirementInfo(arg.ID);
                 ShowPage(uc, arg.Title, arg.ID.ToString());
             }
@@ -124,8 +152,22 @@ namespace _01UI
         private void BtnMain_Click(object sender, EventArgs e)
         {
             var jn = this.uc_JobNews ?? new UC_JobNews();
+            jn.EvenShowJobNews += Jn_EvenShowJobNews;
             this.ShowPage(jn, "首页", "首页");
         }
+        /// <summary>
+        /// 双击展示职场新闻详情
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Jn_EvenShowJobNews(object sender, EventArgs e)
+        {
+            var arg = e as RequireEventArgs;
+            var uc = new UC_ShowJobNews(arg.ID);
+            this.ShowPage(uc, arg.Title, arg.ID.ToString());
+
+        }
+
         /// <summary>
         /// 展示页面
         /// 如果该页面已经存在，则展示它。

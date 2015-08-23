@@ -12,7 +12,7 @@ using _02BLL;
 
 namespace _01UI
 {
-    public partial class UC_Info : UserControl
+    public partial class UC_Info : UserControl, IRefreshable
     {
         BaseBLL<t_User> userBll = new BaseBLL<t_User>();
         t_User loginUser;
@@ -59,9 +59,14 @@ namespace _01UI
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            this.loginUser.ShowInfo = this.htmlEditor1.BodyHtml??string.Empty;
+            this.loginUser.ShowInfo = this.htmlEditor1.BodyHtml ?? string.Empty;
             userBll.Update(this.loginUser);
             MessageBox.Show("保存成功", "提示", MessageBoxButtons.OK);
+        }
+
+        public void Refresh(object obj)
+        {
+            this.UC_Info_Load(null, null);
         }
     }
 }

@@ -71,6 +71,10 @@
       <Project>{256D8E18-A76D-40D1-A4E1-0ECA3947FF81}</Project>
       <Name>02BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\03DAL\03DAL.csproj">
+      <Project>{8738f7d9-28cc-4bb2-b7d5-bf2682450140}</Project>
+      <Name>03DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\04Model\04Model.csproj">
       <Project>{7ca7078b-9f61-4300-9ba7-f4d2132a496f}</Project>
       <Name>04Model</Name>

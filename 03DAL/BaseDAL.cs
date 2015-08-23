@@ -2,13 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace _03DAL
 {
-    public class BaseDAL<T> where T:class
+    public class BaseDAL<T> where T : class
     {
         /// <summary>
         /// 获取线程中实例唯一的上下文
@@ -134,15 +133,32 @@ namespace _03DAL
             }
         }
         /// <summary>
-        /// 多条件查询
+        /// 多条件查询（缓存版本）
         /// </summary>
         /// <param name="whereLambda">不定个数的条件</param>
         /// <returns>查询结果表示树</returns>
-        public IQueryable<T> Query(Func<T, bool> whereLambda)
+        public IQueryable<T> Query(Expression<Func<T, bool>> whereLambda)
         {
             try
             {
-                return this._db.Set<T>().Where(whereLambda).AsQueryable<T>();
+                return this._db.Set<T>().Where(whereLambda);
+            }
+            catch
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// 多条件查询（无缓存版本）
+        /// </summary>
+        /// <param name="whereLambda">不定个数的条件</param>
+        /// <returns>查询结果表示树</returns>
+        public IQueryable<T> QueryNoTracking(Expression<Func<T, bool>> whereLambda)
+        {
+            try
+            {
+                return this._db.Set<T>().AsNoTracking<T>().Where<T>(whereLambda);
             }
             catch
             {
@@ -171,12 +187,48 @@ namespace _03DAL
                 if (isAsc)
                 {
                     //升序分页
-                    return this._db.Set<T>().Where(whereLamdba).OrderBy<T, Tkey>(orderby).Skip((pageIndex - 1) * pageSize).Take(pageSize).AsQueryable<T>();
+                    return this._db.Set<T>().Where(whereLamdba).OrderBy<T, Tkey>(orderby).Skip((pageIndex - 1) * pageSize).Take(pageSize);
                 }
                 else
                 {
                     //降序分页
-                    return this._db.Set<T>().Where(whereLamdba).OrderByDescending<T, Tkey>(orderby).Skip((pageIndex - 1) * pageSize).Take(pageSize).AsQueryable<T>();
+                    return this._db.Set<T>().Where(whereLamdba).OrderByDescending<T, Tkey>(orderby).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                }
+
+            }
+            catch
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// 分页查询(无缓存版本）
+        /// </summary>
+        /// <typeparam name="Tkey"></typeparam>
+        /// <param name="pageIndex">当前页数</param>
+        /// <param name="pageSize">步长</param>
+        /// <param name="totalRecord">总页数</param>
+        /// <param name="whereLamdba">条件</param>
+        /// <param name="orderby">排序依据</param>
+        /// <param name="isAsc">是否升序</param>
+        /// <returns>查询结果表达式树</returns>
+        public IQueryable<T> QueryPartialAsNoTracking<Tkey>(int pageIndex, int pageSize, out int totalRecord, System.Linq.Expressions.Expression<Func<T, bool>> whereLamdba, System.Linq.Expressions.Expression<Func<T, Tkey>> orderby, bool isAsc)
+        {
+            try
+            {
+                //总数
+                totalRecord = this._db.Set<T>().Count();
+                //判断是否升序
+                if (isAsc)
+                {
+                    //升序分页
+                    return this._db.Set<T>().AsNoTracking<T>().Where(whereLamdba).OrderBy<T, Tkey>(orderby).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                }
+                else
+                {
+                    //降序分页
+                    return this._db.Set<T>().AsNoTracking<T>().Where(whereLamdba).OrderByDescending<T, Tkey>(orderby).Skip((pageIndex - 1) * pageSize).Take(pageSize);
                 }
 
             }

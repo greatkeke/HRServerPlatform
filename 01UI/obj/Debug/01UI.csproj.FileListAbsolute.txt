@@ -25,3 +25,4 @@ F:\ShellFile\HRServerPlatform\01UI\bin\Debug\WinHtmlEditor.dll
 F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_Info.resources
 F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_Require.resources
 F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_ShowRequirementInfo.resources
+F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_ShowJobNews.resources

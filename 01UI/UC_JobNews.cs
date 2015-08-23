@@ -11,8 +11,12 @@ using _04Model;
 using _02BLL;
 namespace _01UI
 {
-    public partial class UC_JobNews : UserControl
+    public partial class UC_JobNews : UserControl, IRefreshable
     {
+        /// <summary>
+        /// 展示职场新闻
+        /// </summary>
+        public event EventHandler EvenShowJobNews;
         public UC_JobNews()
         {
             InitializeComponent();
@@ -21,7 +25,22 @@ namespace _01UI
             this.AutoSize = true;
             this.dataGridView1.AutoGenerateColumns = false;
             this.Load += UC_JobNews_Load;
-            this.ContextMenuStrip = new ContextMenuStrip();
+            this.dataGridView1.DoubleClick += DataGridView1_DoubleClick;
+        }
+
+        private void DataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            var rows = this.dataGridView1.SelectedRows;
+            if (rows.Count <= 0)
+            {
+                return;
+            }
+            var id = rows[0].Cells["ID"].Value;
+            var title = rows[0].Cells["Title"].Value;
+            if (id != null && EvenShowJobNews != null && title != null)
+            {
+                EvenShowJobNews.Invoke(sender, new RequireEventArgs() { ID = new Guid(id.ToString()), Title = title.ToString() });
+            }
         }
 
         private void UC_JobNews_Load(object sender, EventArgs e)
@@ -30,8 +49,14 @@ namespace _01UI
             BaseBLL<t_JobNews> newsBll = new BaseBLL<t_JobNews>();
             var source = newsBll.Query(u => 1 == 1).OrderByDescending(u => u.Date).ToList();
             this.dataGridView1.DataSource = source;
-            this.dataGridView1.Columns[0].DataPropertyName = "Date";
-            this.dataGridView1.Columns[1].DataPropertyName = "Title";
+            Date.DataPropertyName = "Date";
+            Title.DataPropertyName = "Title";
+            ID.DataPropertyName = "ID";
+        }
+
+        public void Refresh(object obj)
+        {
+            this.UC_JobNews_Load(null, null);
         }
     }
 }

@@ -124,11 +124,28 @@ namespace _02BLL
         /// </summary>
         /// <param name="whereLambda">不定个数的条件</param>
         /// <returns>查询结果表示树</returns>
-        public IQueryable<T> Query(Func<T, bool> whereLambda)
+        public IQueryable<T> Query(Expression<Func<T, bool>> whereLambda)
         {
             try
             {
                 return this.baseDal.Query(whereLambda);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// 多条件查询
+        /// </summary>
+        /// <param name="whereLambda">不定个数的条件</param>
+        /// <returns>查询结果表示树</returns>
+        public IQueryable<T> QueryNoTracking(Expression<Func<T, bool>> whereLambda)
+        {
+            try
+            {
+                return this.baseDal.QueryNoTracking(whereLambda);
             }
             catch (Exception)
             {

@@ -12,7 +12,7 @@ using _02BLL;
 
 namespace _01UI
 {
-    public partial class UC_ShowRequirementInfo : UserControl
+    public partial class UC_ShowRequirementInfo : UserControl, IRefreshable
     {
         private t_Requirement requirement;
         private BaseBLL<t_Requirement> bll = new BaseBLL<t_Requirement>();
@@ -57,6 +57,13 @@ namespace _01UI
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
+        }
+
+        public void Refresh(object obj)
+        {
+            var id = new Guid(obj.ToString());
+            this.requirement = bll.QueryNoTracking(u => u.ID == id).FirstOrDefault();
+            this.UC_ShowRequirementInfo_Load(null, null);
         }
     }
 }

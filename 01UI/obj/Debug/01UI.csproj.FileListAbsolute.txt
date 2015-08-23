@@ -23,3 +23,5 @@ F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_JobNews.resources
 F:\ShellFile\HRServerPlatform\01UI\bin\Debug\NetSpell.SpellChecker.dll
 F:\ShellFile\HRServerPlatform\01UI\bin\Debug\WinHtmlEditor.dll
 F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_Info.resources
+F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_Require.resources
+F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_ShowRequirementInfo.resources

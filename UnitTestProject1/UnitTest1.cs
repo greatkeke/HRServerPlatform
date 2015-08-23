@@ -12,8 +12,9 @@ namespace _02BLL.Tests
         [TestMethod()]
         public void AddTest()
         {
-            BaseBLL<t_Categories> baseBll = new BaseBLL<t_Categories>();
-            baseBll.Add(new t_Categories() { ID = Guid.NewGuid(), CategoryName = "world" });
+            var bll = new BaseBLL<t_Requirement>();
+            bll.Add(new t_Requirement() { ID = Guid.NewGuid(), CategoryID = Guid.NewGuid(), Title = "he", PostDate = DateTime.Now, PostID = Guid.NewGuid(), Content = "内容", Gread = 2, Status = 1 });
+
 
         }
     }

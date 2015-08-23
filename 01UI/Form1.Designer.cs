@@ -29,59 +29,48 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.helloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.worldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.PageMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.关闭ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关闭右侧窗口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.contextMenuStrip1.SuspendLayout();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.PageMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // contextMenuStrip1
+            // PageMenu
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helloToolStripMenuItem,
-            this.worldToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
+            this.PageMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.关闭ToolStripMenuItem,
+            this.关闭右侧窗口ToolStripMenuItem,
+            this.刷新ToolStripMenuItem});
+            this.PageMenu.Name = "PageMenu";
+            this.PageMenu.Size = new System.Drawing.Size(149, 70);
             // 
-            // helloToolStripMenuItem
+            // 关闭ToolStripMenuItem
             // 
-            this.helloToolStripMenuItem.Name = "helloToolStripMenuItem";
-            this.helloToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
-            this.helloToolStripMenuItem.Text = "Hello";
+            this.关闭ToolStripMenuItem.Name = "关闭ToolStripMenuItem";
+            this.关闭ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.关闭ToolStripMenuItem.Text = "关闭";
             // 
-            // worldToolStripMenuItem
+            // 关闭右侧窗口ToolStripMenuItem
             // 
-            this.worldToolStripMenuItem.Name = "worldToolStripMenuItem";
-            this.worldToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.worldToolStripMenuItem.Text = "World";
+            this.关闭右侧窗口ToolStripMenuItem.Name = "关闭右侧窗口ToolStripMenuItem";
+            this.关闭右侧窗口ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.关闭右侧窗口ToolStripMenuItem.Text = "关闭右侧窗口";
             // 
-            // splitContainer1
+            // 刷新ToolStripMenuItem
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.panel1);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1354, 733);
-            this.splitContainer1.SplitterDistance = 553;
-            this.splitContainer1.TabIndex = 4;
+            this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
+            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.刷新ToolStripMenuItem.Text = "刷新";
             // 
             // flowLayoutPanel1
             // 
@@ -101,13 +90,33 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // panel1
+            // tabControl1
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 100);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1354, 453);
-            this.panel1.TabIndex = 1;
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 100);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1354, 453);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
+            this.splitContainer1.Size = new System.Drawing.Size(1354, 733);
+            this.splitContainer1.SplitterDistance = 553;
+            this.splitContainer1.TabIndex = 4;
             // 
             // Form1
             // 
@@ -117,24 +126,25 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.PageMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem helloToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem worldToolStripMenuItem;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ContextMenuStrip PageMenu;
+        private System.Windows.Forms.ToolStripMenuItem 关闭ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 关闭右侧窗口ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 刷新ToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 

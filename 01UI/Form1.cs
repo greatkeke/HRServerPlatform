@@ -64,13 +64,13 @@ namespace _01UI
 
         private void InitControls()
         {
-            btnMain = new Button() { Text = "首页", Height = 100, Width = 150, BackColor = Color.SkyBlue };
+            btnMain = new Button() { Text = "首页", Height = 50, Width = 150, BackColor = Color.SkyBlue };
             btnMain.Click += BtnMain_Click;
-            btnInfo = new Button() { Text = "个人资料", Height = 100, Width = 150, BackColor = Color.SkyBlue };
+            btnInfo = new Button() { Text = "个人资料", Height = 50, Width = 150, BackColor = Color.SkyBlue };
             btnInfo.Click += BtnInfo_Click;
-            btnRequire = new Button() { Text = "需求列表", Height = 100, Width = 150, BackColor = Color.SkyBlue };
+            btnRequire = new Button() { Text = "需求列表", Height = 50, Width = 150, BackColor = Color.SkyBlue };
             btnRequire.Click += BtnRequire_Click;
-            btnContact = new Button() { Text = "通讯", Height = 100, Width = 150, BackColor = Color.SkyBlue };
+            btnContact = new Button() { Text = "通讯", Height = 50, Width = 150, BackColor = Color.SkyBlue };
             btnContact.Click += BtnContact_Click;
             this.flowLayoutPanel1.Controls.AddRange(new Button[] {
                 btnMain,btnInfo,btnRequire,btnContact
@@ -88,29 +88,23 @@ namespace _01UI
         /// <param name="e"></param>
         private void BtnRequire_Click(object sender, EventArgs e)
         {
-            //是否已经打开首页选项卡
-            var page = this.tabControl1.TabPages.WherePage("需求");
-            if (page == null)
-            {
-                var uc = this.uc_Require ?? new UC_Require() { Dock = DockStyle.Fill };
-                page = new TabPage("需求") { Tag = "需求" };
-                page.Controls.Add(uc);
-                this.tabControl1.TabPages.Add(page);
-                uc.EvenShowRequirementInfo += Uc_EvenShowRequirementInfo;
-            }
-            this.tabControl1.SelectedTab = page;
-
+            var uc = this.uc_Require ?? new UC_Require();
+            uc.EvenShowRequirementInfo += Uc_EvenShowRequirementInfo;
+            this.ShowPage(uc, "需求", "需求");
         }
 
         private void Uc_EvenShowRequirementInfo(object sender, EventArgs e)
         {
             var arg = e as RequireEventArgs;
-            if (arg!=null)
+            if (arg != null)
             {
-
                 //展示页面
+                var uc = new UC_ShowRequirementInfo(arg.ID);
+                ShowPage(uc, arg.Title, arg.ID.ToString());
             }
         }
+
+
 
         /// <summary>
         /// 个人资料
@@ -119,16 +113,8 @@ namespace _01UI
         /// <param name="e"></param>
         private void BtnInfo_Click(object sender, EventArgs e)
         {
-            //是否已经打开首页选项卡
-            var page = this.tabControl1.TabPages.WherePage("个人资料");
-            if (page == null)
-            {
-                var ucinfo = this.uc_Info ?? new UC_Info() { Dock = DockStyle.Fill };
-                page = new TabPage("个人资料") { Tag = "个人资料" };
-                page.Controls.Add(ucinfo);
-                this.tabControl1.TabPages.Add(page);
-            }
-            this.tabControl1.SelectedTab = page;
+            var ucinfo = this.uc_Info ?? new UC_Info();
+            this.ShowPage(ucinfo, "个人资料", "个人资料");
         }
         /// <summary>
         /// 首页
@@ -137,14 +123,24 @@ namespace _01UI
         /// <param name="e"></param>
         private void BtnMain_Click(object sender, EventArgs e)
         {
-            //是否已经打开首页选项卡
-            var page = this.tabControl1.TabPages.WherePage("首页");
+            var jn = this.uc_JobNews ?? new UC_JobNews();
+            this.ShowPage(jn, "首页", "首页");
+        }
+        /// <summary>
+        /// 展示页面
+        /// 如果该页面已经存在，则展示它。
+        /// </summary>
+        /// <param name="uc">用户控件</param>
+        /// <param name="pageTitle">page的title</param>
+        /// <param name="tag">page的tag</param>
+        private void ShowPage(UserControl uc, string pageTitle, string tag)
+        {
+            var page = this.tabControl1.TabPages.WherePage(tag);
             if (page == null)
             {
-                var jn = this.uc_JobNews ?? new UC_JobNews() { Dock = DockStyle.Fill };
-                //展示首页新闻
-                page = new TabPage("首页") { Tag = "首页" };
-                page.Controls.Add(jn);
+                uc.Dock = DockStyle.Fill;
+                page = new TabPage(pageTitle) { Tag = tag };
+                page.Controls.Add(uc);
                 this.tabControl1.TabPages.Add(page);
             }
             this.tabControl1.SelectedTab = page;

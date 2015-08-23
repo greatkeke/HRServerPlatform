@@ -16,6 +16,7 @@ namespace _01UI
         public UC_Require()
         {
             InitializeComponent();
+            this.AutoSize = true;
             this.Load += UC_Require_Load;
             this.dataGridView1.AutoGenerateColumns = false;
         }
@@ -49,11 +50,12 @@ namespace _01UI
             var rows = this.dataGridView1.SelectedRows;
             if (rows.Count <= 0) return;
             var id = rows[0].Cells[0].Value as Guid?;
+            var title = rows[0].Cells["Title"].Value.ToString();
             if (id != null)
             {
                 if (this.EvenShowRequirementInfo != null)
                 {
-                    this.EvenShowRequirementInfo.Invoke(sender, new RequireEventArgs() { ID = id.Value });
+                    this.EvenShowRequirementInfo.Invoke(sender, new RequireEventArgs() { ID = id.Value, Title = title });
                 }
             }
 

@@ -20,3 +20,6 @@ F:\ShellFile\HRServerPlatform\01UI\bin\Debug\EntityFramework.SqlServer.dll
 F:\ShellFile\HRServerPlatform\01UI\bin\Debug\EntityFramework.SqlServer.xml
 F:\ShellFile\HRServerPlatform\01UI\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_JobNews.resources
+F:\ShellFile\HRServerPlatform\01UI\bin\Debug\NetSpell.SpellChecker.dll
+F:\ShellFile\HRServerPlatform\01UI\bin\Debug\WinHtmlEditor.dll
+F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_Info.resources

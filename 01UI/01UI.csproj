@@ -67,6 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonTool\ExtensionFunc.cs" />
+    <Compile Include="CommonTool\Tools.cs" />
+    <Compile Include="DataGridViewAutoFilterColumnHeaderCell.cs" />
+    <Compile Include="DataGridViewAutoFilterTextBoxColumn.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

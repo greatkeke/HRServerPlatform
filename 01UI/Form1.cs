@@ -12,34 +12,6 @@ namespace _01UI
 {
     public partial class Form1 : Form
     {
-        /// <summary>
-        /// 职场新闻
-        /// </summary>
-        UC_JobNews uc_JobNews;
-        /// <summary>
-        /// 个人资料
-        /// </summary>
-        UC_Info uc_Info;
-        /// <summary>
-        /// 需求
-        /// </summary>
-        UC_Require uc_Require;
-        /// <summary>
-        /// 首页按钮
-        /// </summary>
-        Button btnMain;
-        /// <summary>
-        /// 个人资料按钮
-        /// </summary>
-        Button btnInfo;
-        /// <summary>
-        /// 需求按钮
-        /// </summary>
-        Button btnRequire;
-        /// <summary>
-        /// 通讯按钮
-        /// </summary>
-        Button btnContact;
         public Form1()
         {
             InitializeComponent();
@@ -74,7 +46,7 @@ namespace _01UI
             //获取当前page
             var index = this.tabControl1.SelectedIndex;
             this.tabControl1.TabPages.RemoveAt(index);
-            this.tabControl1.SelectedIndex = index >= 1 ? index - 1 : 0;
+            this.tabControl1.SelectedIndex = index - 1;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -89,13 +61,14 @@ namespace _01UI
 
         private void InitControls()
         {
-            btnMain = new Button() { Text = "首页", Height = 50, Width = 150, BackColor = Color.SkyBlue };
+            //todo:验证权限
+            var btnMain = new Button() { Text = "首页", Height = 50, Width = 150, BackColor = Color.SkyBlue };
             btnMain.Click += BtnMain_Click;
-            btnInfo = new Button() { Text = "个人资料", Height = 50, Width = 150, BackColor = Color.SkyBlue };
+            var btnInfo = new Button() { Text = "个人资料", Height = 50, Width = 150, BackColor = Color.SkyBlue };
             btnInfo.Click += BtnInfo_Click;
-            btnRequire = new Button() { Text = "需求列表", Height = 50, Width = 150, BackColor = Color.SkyBlue };
+            var btnRequire = new Button() { Text = "需求列表", Height = 50, Width = 150, BackColor = Color.SkyBlue };
             btnRequire.Click += BtnRequire_Click;
-            btnContact = new Button() { Text = "通讯", Height = 50, Width = 150, BackColor = Color.SkyBlue };
+            var btnContact = new Button() { Text = "通讯", Height = 50, Width = 150, BackColor = Color.SkyBlue };
             btnContact.Click += BtnContact_Click;
             this.flowLayoutPanel1.Controls.AddRange(new Button[] {
                 btnMain,btnInfo,btnRequire,btnContact
@@ -113,7 +86,7 @@ namespace _01UI
         /// <param name="e"></param>
         private void BtnRequire_Click(object sender, EventArgs e)
         {
-            var uc = this.uc_Require ?? new UC_Require();
+            var uc = new UC_Require();
             uc.EvenShowRequirementInfo += Uc_EvenShowRequirementInfo;
             this.ShowPage(uc, "需求", "需求");
         }
@@ -141,8 +114,8 @@ namespace _01UI
         /// <param name="e"></param>
         private void BtnInfo_Click(object sender, EventArgs e)
         {
-            var ucinfo = this.uc_Info ?? new UC_Info();
-            this.ShowPage(ucinfo, "个人资料", "个人资料");
+            var uc = new UC_Info();
+            this.ShowPage(uc, "个人资料", "个人资料");
         }
         /// <summary>
         /// 首页
@@ -151,9 +124,9 @@ namespace _01UI
         /// <param name="e"></param>
         private void BtnMain_Click(object sender, EventArgs e)
         {
-            var jn = this.uc_JobNews ?? new UC_JobNews();
-            jn.EvenShowJobNews += Jn_EvenShowJobNews;
-            this.ShowPage(jn, "首页", "首页");
+            var uc = new UC_JobNews();
+            uc.EvenShowJobNews += Jn_EvenShowJobNews;
+            this.ShowPage(uc, "首页", "首页");
         }
         /// <summary>
         /// 双击展示职场新闻详情

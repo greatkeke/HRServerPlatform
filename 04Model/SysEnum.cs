@@ -15,7 +15,6 @@ namespace _04Model
     }
     public enum EnumRequireGread
     {
-        无 = 0,
         简单 = 1,
         一般 = 2,
         困难 = 3

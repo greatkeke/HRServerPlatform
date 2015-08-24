@@ -89,7 +89,7 @@
         public System.Guid ID { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public Nullable<int> Gread { get; set; }
+        public int Gread { get; set; }
         public System.Guid PostID { get; set; }
         public System.Guid CategoryID { get; set; }
         public int Status { get; set; }

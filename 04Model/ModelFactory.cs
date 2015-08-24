@@ -17,7 +17,6 @@ namespace _04Model
         /// <returns> 上下文对象 </returns>
         public static DbContext GetContext()
         {
-            return new _04Model.Model1();
             if (dbContext == null)
             {
                 dbContext = new _04Model.Model1();

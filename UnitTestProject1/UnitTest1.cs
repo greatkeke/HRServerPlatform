@@ -46,12 +46,25 @@ namespace UnitTestProject1
         {
             //var db = _04Model.ModelFactory.GetContext();
             var db = new _04Model.Model1();
-            var t = db.Set<t_Categories>().ToList();
-            db.Set<t_Categories>().Add(new t_Categories()
-            {
-                ID = Guid.NewGuid(),
-                CategoryName = "Hello"
-            });
+            //var t = db.Set<t_Categories>().ToList();
+            //db.Set<t_Categories>().Add(new t_Categories()
+            //{
+            //    ID = Guid.NewGuid(),
+            //    CategoryName = "IOS"
+            //});
+            //db.SaveChanges();
+            //db.Set<t_Requirement>().Add(new t_Requirement()
+            //{
+            //    ID = Guid.NewGuid(),
+            //    CategoryID = Guid.NewGuid(),
+            //    Content = "内容",
+            //    PostDate = DateTime.Now,
+            //    Gread = 1,
+            //    PostID = Guid.NewGuid(),
+            //    Status = 1,
+            //    Title = "标题"
+            //});
+            
             db.SaveChanges();
 
         }

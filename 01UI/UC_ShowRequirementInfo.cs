@@ -44,7 +44,7 @@ namespace _01UI
             {
                 this.tbxTitle.Text = requirement.Title;
                 this.cmbCate.SelectedValue = requirement.CategoryID;
-                this.cmbGread.SelectedIndex = requirement.Gread == null ? 0 : requirement.Gread.Value;
+                this.cmbGread.SelectedIndex = requirement.Gread;
                 this.cmbStatus.SelectedIndex = requirement.Status;
                 this.dtiDate.Value = requirement.PostDate;
                 this.htmlEditor1.BodyHtml = requirement.Content;
@@ -57,6 +57,28 @@ namespace _01UI
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //非法校验
+            var ctl = new Tools().CheckIllegalControls(this.tbxTitle, this.cmbCate, this.cmbGread, this.cmbStatus, this.htmlEditor1);
+            if (ctl != null)
+            {
+                ctl.Focus();
+                MessageBox.Show("您还有信息未录入哦！");
+                return;
+            }
+            requirement.Title = this.tbxTitle.Text;
+            requirement.CategoryID = new Guid(this.cmbCate.SelectedValue.ToString());
+            requirement.Gread = this.cmbGread.SelectedIndex;
+            requirement.Status = this.cmbStatus.SelectedIndex;
+            requirement.PostDate = this.dtiDate.Value;
+            requirement.Content = this.htmlEditor1.BodyHtml;
+            if (bll.Update(this.requirement))
+            {
+                MessageBox.Show("保存成功", "提示", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("保存失败", "提示", MessageBoxButtons.OK);
+            }
         }
 
         public void Refresh(object obj)

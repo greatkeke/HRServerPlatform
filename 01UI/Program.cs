@@ -9,7 +9,7 @@ namespace _01UI
 {
     static class Program
     {
-        public static Guid loginUserID;
+        public static Guid loginUserID = new Guid("5c8b590d-0ba7-479b-ade8-be797838a955");
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>

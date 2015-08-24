@@ -1,4 +1,5 @@
 ﻿using _03DAL;
+using _04Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,6 +120,41 @@ namespace _02BLL
                 throw;
             }
         }
+        /// <summary>
+        /// 筛选和我相关的需求
+        /// </summary>
+        /// <param name="loginUserID"></param>
+        public IQueryable<t_Requirement> GetMyRequirement(Guid loginUserID)
+        {
+            try
+            {
+                var reqDal = new BaseDAL<t_Requirement>();
+                var ordDal = new BaseDAL<t_Orders>();
+                //实现别人的需求 + 自己发布的需求
+                var ords = ordDal.Query(u => u.AchievementID == loginUserID).Select(u => u.RequirementID);
+                IQueryable<t_Requirement> result = reqDal.Query(a => ords.Contains(a.ID) || a.PostID == loginUserID);
+                return result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// 获取用户对应的角色名
+        /// </summary>
+        /// <param name="loginUserID"></param>
+        /// <returns></returns>
+        public List<string> GetRoleName(Guid loginUserID)
+        {
+            var urDal = new BaseDAL<t_UserRole>();
+            var roleDal = new BaseDAL<t_Role>();
+            var roles = urDal.Query(u => u.UserID == loginUserID).Select(u => u.RoleID);
+            var names = roleDal.Query(u => roles.Contains(u.ID)).Select(u => u.RoleName);
+            return names.ToList();
+        }
+
         /// <summary>
         /// 多条件查询
         /// </summary>

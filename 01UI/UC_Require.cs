@@ -3,12 +3,15 @@ using System.Windows.Forms;
 using _02BLL;
 using _04Model;
 using System.Linq;
+using DataGridViewAutoFilter;
+using System.Data;
 
 namespace _01UI
 {
-    public partial class UC_Require : UserControl,IRefreshable
+    public partial class UC_Require : UserControl, IRefreshable
     {
         BaseBLL<t_Requirement> requireBll = new BaseBLL<t_Requirement>();
+        BaseBLL<t_User> userBll = new BaseBLL<t_User>();
         /// <summary>
         /// 展示需求的详细信息
         /// </summary>
@@ -19,6 +22,12 @@ namespace _01UI
             this.AutoSize = true;
             this.Load += UC_Require_Load;
             this.dataGridView1.AutoGenerateColumns = false;
+            ID.DataPropertyName = "ID";
+            PostDate.DataPropertyName = "PostDate";
+            Title.DataPropertyName = "Title";
+            Categories.DataPropertyName = "CatetogriyName";
+            Status.DataPropertyName = "Status";
+            Gread.DataPropertyName = "Gread";
         }
 
         private void UC_Require_Load(object sender, EventArgs e)
@@ -26,15 +35,10 @@ namespace _01UI
             try
             {
                 //获取数据
-                var postDate = DateTime.Now.AddDays(-3);
-                var source = requireBll.Query(u => u.PostDate >= postDate).ConvertToRequireShowModel().OrderByDescending(u => u.PostDate).ToList();
+                DataTable table = requireBll.Query(u => true).ConvertToRequireShowModel().OrderByDescending(u => u.PostDate).CopyToDataTable();
+                BindingSource source = new BindingSource();
+                source.DataSource = table;
                 this.dataGridView1.DataSource = source;
-                ID.DataPropertyName = "ID";
-                PostDate.DataPropertyName = "PostDate";
-                Title.DataPropertyName = "Title";
-                Categories.DataPropertyName = "CatetogriyName";
-                Status.DataPropertyName = "Status";
-                Gread.DataPropertyName = "Gread";
             }
             catch (Exception)
             {
@@ -61,10 +65,26 @@ namespace _01UI
             }
 
         }
-
+        /// <summary>
+        /// 刷新
+        /// </summary>
+        /// <param name="obj"></param>
         public void Refresh(object obj)
         {
             UC_Require_Load(null, null);
+        }
+        /// <summary>
+        /// 查看我的需求
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataTable table = userBll.GetMyRequirement(Program.loginUserID).ConvertToRequireShowModel().OrderByDescending(u => u.PostDate).CopyToDataTable();
+            BindingSource source = new BindingSource();
+            source.DataSource = table;
+            this.dataGridView1.DataSource = null;
+            this.dataGridView1.DataSource = source;
         }
     }
     /// <summary>

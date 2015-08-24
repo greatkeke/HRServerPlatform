@@ -21,17 +21,13 @@ namespace _01UI
             InitializeComponent();
             this.AutoSize = true;
             this.htmlEditor1.ShowToolBar = false;
-            this.htmlEditor1.Enabled = false;
+            this.htmlEditor1.ReadOnly = true;
             this.Load += UC_Info_Load;
         }
 
 
         private void UC_Info_Load(object sender, EventArgs e)
         {
-            if (Program.loginUserID == null)
-            {
-                //return;
-            }
             //获取当前用户的特长信息
 
             this.loginUser = userBll.Query(u => u.ID == Program.loginUserID).FirstOrDefault();
@@ -50,7 +46,7 @@ namespace _01UI
         private void button2_Click(object sender, EventArgs e)
         {
             this.htmlEditor1.ShowToolBar = true;
-            this.htmlEditor1.Enabled = true;
+            this.htmlEditor1.ReadOnly = false;
         }
         /// <summary>
         /// 保存

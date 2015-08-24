@@ -25,6 +25,12 @@ namespace _01UI
             this.关闭ToolStripMenuItem.Click += 关闭ToolStripMenuItem_Click;
             this.关闭其他窗口ToolStripMenuItem.Click += 关闭其他窗口ToolStripMenuItem_Click;
             this.刷新ToolStripMenuItem.Click += 刷新ToolStripMenuItem_Click;
+            this.FormClosed += Form1_FormClosed;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,8 +58,6 @@ namespace _01UI
         private void Form1_Load(object sender, EventArgs e)
         {
             InitControls();
-            //展示欢迎
-            this.pictureBox1.Image = Image.FromFile(@"F:\ShellFile\HRServerPlatform\01UI\Source\屏幕截图(1).png");
             BtnMain_Click(null, null);
 
 
@@ -68,7 +72,7 @@ namespace _01UI
             btnInfo.Click += BtnInfo_Click;
             var btnRequire = new Button() { Text = "需求列表", Height = 50, Width = 150, BackColor = Color.SkyBlue };
             btnRequire.Click += BtnRequire_Click;
-            var btnContact = new Button() { Text = "通讯", Height = 50, Width = 150, BackColor = Color.SkyBlue };
+            var btnContact = new Button() { Text = "会话", Height = 50, Width = 150, BackColor = Color.SkyBlue };
             btnContact.Click += BtnContact_Click;
             this.flowLayoutPanel1.Controls.AddRange(new Button[] {
                 btnMain,btnInfo,btnRequire,btnContact
@@ -77,7 +81,8 @@ namespace _01UI
 
         private void BtnContact_Click(object sender, EventArgs e)
         {
-
+            var uc = new UC_Session(Program.loginUserID);
+            this.ShowPage(uc, "会话", "会话");
         }
         /// <summary>
         /// 需求

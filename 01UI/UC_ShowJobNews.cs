@@ -24,7 +24,7 @@ namespace _01UI
             this.tbxTitle.Enabled = false;
             this.dtpDate.Enabled = false;
             this.htmlEditor1.ShowToolBar = false;
-            this.htmlEditor1.Enabled = false;
+            this.htmlEditor1.ReadOnly = true;
             this.btnSave.Visible = false;
             this.btnDel.Visible = false;
 
@@ -35,7 +35,7 @@ namespace _01UI
             {
                 this.tbxTitle.Enabled = true;
                 this.htmlEditor1.ShowToolBar = true;
-                this.htmlEditor1.Enabled = true;
+                this.htmlEditor1.ReadOnly = false;
                 this.btnSave.Visible = true;
                 //显示当前用户的登录名
                 var user = userBll.Query(u => u.ID == Program.loginUserID).Select(u => u.User).FirstOrDefault();

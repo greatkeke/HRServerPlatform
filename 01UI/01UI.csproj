@@ -110,6 +110,12 @@
     <Compile Include="UC_Require.Designer.cs">
       <DependentUpon>UC_Require.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_Session.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Session.Designer.cs">
+      <DependentUpon>UC_Session.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_ShowJobNews.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +145,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UC_Info.resx">
       <DependentUpon>UC_Info.cs</DependentUpon>
@@ -148,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Require.resx">
       <DependentUpon>UC_Require.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Session.resx">
+      <DependentUpon>UC_Session.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_ShowJobNews.resx">
       <DependentUpon>UC_ShowJobNews.cs</DependentUpon>
@@ -180,7 +190,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Source\屏幕截图%281%29.png" />
+    <Content Include="Source\屏幕截图%281%29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

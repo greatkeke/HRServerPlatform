@@ -60,31 +60,31 @@ namespace _01UI
         /// <param name="id"></param>
         private void CheckIsMine(Guid id)
         {
-            if (bll.GetRoleName(Program.loginUserID).Any(u => u == "管理员"))
+            var roles = bll.GetRoleName(Program.loginUserID);
+            if (roles.Any(u => u == "管理员"))
             {
                 //如果是管理员，则显示“删除”
                 this.btnDel.Visible = true;
             }
-            else if (bll.GetRoleName(Program.loginUserID).Any(u => u == "学生"))
+            if (roles.Any(u => u == "学生"))
             {
                 //显示竞标
                 this.btnWant.Visible = true;
             }
-            else
+
+            if (bll.Query(u => u.ID == id && u.PostID == Program.loginUserID).Any())
             {
-                if (bll.Query(u => u.ID == id && u.PostID == Program.loginUserID).Any())
+                //自己发布的需求，还没有成交的话则可以更改。
+                if (this.requirement.Status < (int)EnumRequireStauts.成交)
                 {
-                    //自己发布的需求，还没有成交的话则可以更改。
-                    if (this.requirement.Status < (int)EnumRequireStauts.成交)
-                    {
-                        this.htmlEditor1.ShowToolBar = true;
-                        this.tbxTitle.Enabled = true;
-                        this.cmbCate.Enabled = true;
-                        this.cmbGread.Enabled = true;
-                        this.dtiDate.Enabled = true;
-                    }
+                    this.htmlEditor1.ShowToolBar = true;
+                    this.tbxTitle.Enabled = true;
+                    this.cmbCate.Enabled = true;
+                    this.cmbGread.Enabled = true;
+                    this.dtiDate.Enabled = true;
                 }
             }
+
         }
 
         /// <summary>
@@ -162,7 +162,26 @@ namespace _01UI
 
         private void btnWant_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("此操作将会展示你的个人信息给对方", "确认竞标", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                var seBll = new BaseBLL<t_Session>();
+                var session = new t_Session()
+                {
+                    ID = Guid.NewGuid(),
+                    AchivementID = Program.loginUserID,
+                    RequireID = this.requirement.PostID,
+                    RequirementID = this.requirement.ID,
+                    SessionDate = DateTime.Now
+                };
+                if (seBll.Add(session))
+                {
+                    MessageBox.Show("已竞标，请静候佳音");
+                }
+                else
+                {
+                    MessageBox.Show("啊偶~前方高能预警，请稍后重试");
+                }
+            }
         }
     }
 }

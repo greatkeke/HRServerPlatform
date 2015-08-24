@@ -47,24 +47,24 @@
             this.关闭其他窗口ToolStripMenuItem,
             this.刷新ToolStripMenuItem});
             this.PageMenu.Name = "PageMenu";
-            this.PageMenu.Size = new System.Drawing.Size(153, 92);
+            this.PageMenu.Size = new System.Drawing.Size(149, 70);
             // 
             // 关闭ToolStripMenuItem
             // 
             this.关闭ToolStripMenuItem.Name = "关闭ToolStripMenuItem";
-            this.关闭ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关闭ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.关闭ToolStripMenuItem.Text = "关闭";
             // 
             // 关闭其他窗口ToolStripMenuItem
             // 
             this.关闭其他窗口ToolStripMenuItem.Name = "关闭其他窗口ToolStripMenuItem";
-            this.关闭其他窗口ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关闭其他窗口ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.关闭其他窗口ToolStripMenuItem.Text = "关闭其他窗口";
             // 
             // 刷新ToolStripMenuItem
             // 
             this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
-            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.刷新ToolStripMenuItem.Text = "刷新";
             // 
             // tabControl1
@@ -83,6 +83,8 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.ImageLocation = "F:\\ShellFile\\HRServerPlatform\\01UI\\Source\\屏幕截图(1).png";
+            this.pictureBox1.InitialImage = global::_01UI.Properties.Resources.屏幕截图_1_;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1354, 100);

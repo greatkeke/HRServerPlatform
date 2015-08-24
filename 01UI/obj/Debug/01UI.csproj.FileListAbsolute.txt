@@ -28,3 +28,5 @@ F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_ShowRequirementInfo.resour
 F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_ShowJobNews.resources
 F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.FormLogin.resources
 F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.FormReg.resources
+F:\ShellFile\HRServerPlatform\01UI\bin\Debug\Source\屏幕截图(1).png
+F:\ShellFile\HRServerPlatform\01UI\obj\Debug\_01UI.UC_Session.resources

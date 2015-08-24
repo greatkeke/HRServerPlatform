@@ -111,6 +111,7 @@
         public System.Guid ID { get; set; }
         public System.Guid RequirementID { get; set; }
         public System.Guid AchivementID { get; set; }
+        public System.Guid RequireID { get; set; }
         public System.DateTime SessionDate { get; set; }
     }
     public partial class t_User

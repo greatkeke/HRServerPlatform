@@ -9,7 +9,7 @@ namespace _01UI
 {
     static class Program
     {
-        public static Guid loginUserID ;
+        public static Guid loginUserID = new Guid("328a2194-2bad-4b67-a4ef-ba89294ed74b");
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -18,7 +18,7 @@ namespace _01UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+            Application.Run(new Form1());
         }
     }
 }

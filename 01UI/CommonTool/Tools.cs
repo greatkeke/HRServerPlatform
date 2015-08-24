@@ -8,14 +8,14 @@ using WinHtmlEditor;
 
 namespace _01UI
 {
-    class Tools
+    static class Tools
     {
         /// <summary>
         /// 检查控件的合法性
         /// </summary>
         /// <param name="controls">要检查的控件</param>
         /// <returns>非法的控件</returns>
-        internal Control CheckIllegalControls(params Control[] controls)
+        internal static Control CheckIllegalControls(params Control[] controls)
         {
             foreach (var item in controls)
             {

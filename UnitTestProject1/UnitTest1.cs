@@ -64,7 +64,15 @@ namespace UnitTestProject1
             //    Status = 1,
             //    Title = "标题"
             //});
-            
+            db.Set<t_JobNews>().Add(new t_JobNews()
+            {
+                ID = Guid.NewGuid(),
+                Date = DateTime.Now,
+                PostID = new Guid("5c8b590d-0ba7-479b-ade8-be797838a955"),
+                Content = "Hello",
+                Title = "你好"
+            });
+
             db.SaveChanges();
 
         }

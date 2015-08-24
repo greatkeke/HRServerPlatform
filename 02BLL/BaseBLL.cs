@@ -30,6 +30,7 @@ namespace _02BLL
                 throw;
             }
         }
+
         /// <summary>
         /// 增加实体集合
         /// </summary>

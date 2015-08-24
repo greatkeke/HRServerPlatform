@@ -17,6 +17,10 @@ namespace _01UI
         /// 展示职场新闻
         /// </summary>
         public event EventHandler EvenShowJobNews;
+        /// <summary>
+        /// 新增职场新闻
+        /// </summary>
+        public event EventHandler EvenNew;
         public UC_JobNews()
         {
             InitializeComponent();
@@ -57,6 +61,14 @@ namespace _01UI
         public void Refresh(object obj)
         {
             this.UC_JobNews_Load(null, null);
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            if (this.EvenNew != null)
+            {
+                this.EvenNew.Invoke(sender, new RequireEventArgs() { Title = "我要发布" });
+            }
         }
     }
 }

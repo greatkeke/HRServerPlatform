@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnWant = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.htmlEditor1 = new WinHtmlEditor.HtmlEditor();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,6 +50,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnWant);
+            this.panel2.Controls.Add(this.btnDel);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 664);
@@ -55,12 +59,33 @@
             this.panel2.Size = new System.Drawing.Size(902, 25);
             this.panel2.TabIndex = 3;
             // 
+            // btnWant
+            // 
+            this.btnWant.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnWant.Location = new System.Drawing.Point(5, 0);
+            this.btnWant.Name = "btnWant";
+            this.btnWant.Size = new System.Drawing.Size(231, 25);
+            this.btnWant.TabIndex = 2;
+            this.btnWant.Text = "竞标";
+            this.btnWant.UseVisualStyleBackColor = true;
+            this.btnWant.Click += new System.EventHandler(this.btnWant_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDel.Location = new System.Drawing.Point(236, 0);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(286, 25);
+            this.btnDel.TabIndex = 1;
+            this.btnDel.Text = "删除";
+            this.btnDel.UseVisualStyleBackColor = true;
+            // 
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSave.Location = new System.Drawing.Point(516, 0);
+            this.btnSave.Location = new System.Drawing.Point(522, 0);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(386, 25);
+            this.btnSave.Size = new System.Drawing.Size(380, 25);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -248,5 +273,7 @@
         private System.Windows.Forms.ComboBox cmbCate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnDel;
+        private System.Windows.Forms.Button btnWant;
     }
 }

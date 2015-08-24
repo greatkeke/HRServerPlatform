@@ -8,15 +8,18 @@ namespace _04Model
 {
     public enum EnumRequireStauts
     {
-        发布 = 1,
-        成交 = 2,
-        完成 = 3,
-        取消 = 4
+        被删除 = 0,
+        取消 = 1,
+        未发布 = 2,
+        发布 = 3,
+        成交 = 4,
+        完成 = 5
+
     }
     public enum EnumRequireGread
     {
-        简单 = 1,
-        一般 = 2,
-        困难 = 3
+        简单 = 0,
+        一般 = 1,
+        困难 = 2
     }
 }

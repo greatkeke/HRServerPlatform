@@ -88,8 +88,20 @@ namespace _01UI
         {
             var uc = new UC_Require();
             uc.EvenShowRequirementInfo += Uc_EvenShowRequirementInfo;
+            uc.EventNewReq += Uc_EventNewReq;
             this.ShowPage(uc, "需求", "需求");
         }
+
+        private void Uc_EventNewReq(object sender, EventArgs e)
+        {
+            var arg = e as RequireEventArgs;
+            if (arg != null)
+            {
+                var uc = new UC_ShowRequirementInfo(true);
+                ShowPage(uc, arg.Title, arg.Title);
+            }
+        }
+
         /// <summary>
         /// 双击展示需求详情
         /// </summary>
@@ -126,8 +138,21 @@ namespace _01UI
         {
             var uc = new UC_JobNews();
             uc.EvenShowJobNews += Jn_EvenShowJobNews;
+            uc.EvenNew += Uc_EvenNew;
             this.ShowPage(uc, "首页", "首页");
         }
+        /// <summary>
+        /// 新增职场新闻
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Uc_EvenNew(object sender, EventArgs e)
+        {
+            var arg = e as RequireEventArgs;
+            var uc = new UC_ShowJobNews(true);
+            this.ShowPage(uc, arg.Title, arg.Title);
+        }
+
         /// <summary>
         /// 双击展示职场新闻详情
         /// </summary>

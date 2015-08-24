@@ -16,6 +16,10 @@ namespace _01UI
         /// 展示需求的详细信息
         /// </summary>
         public event EventHandler EvenShowRequirementInfo;
+        /// <summary>
+        /// 发布新需求
+        /// </summary>
+        public event EventHandler EventNewReq;
         public UC_Require()
         {
             InitializeComponent();
@@ -28,6 +32,15 @@ namespace _01UI
             Categories.DataPropertyName = "CatetogriyName";
             Status.DataPropertyName = "Status";
             Gread.DataPropertyName = "Gread";
+            CheckPower(Program.loginUserID);
+        }
+
+        private void CheckPower(Guid loginUserID)
+        {
+            if (!userBll.GetRoleName(loginUserID).Any(u => u == "企业"))
+            {
+                //this.btnNew.Visible = false;
+            }
         }
 
         private void UC_Require_Load(object sender, EventArgs e)
@@ -35,7 +48,8 @@ namespace _01UI
             try
             {
                 //获取数据
-                DataTable table = requireBll.Query(u => true).ConvertToRequireShowModel().OrderByDescending(u => u.PostDate).CopyToDataTable();
+                int status = (int)EnumRequireStauts.发布;
+                DataTable table = requireBll.Query(u => u.Status >= status).ConvertToRequireShowModel().OrderByDescending(u => u.PostDate).CopyToDataTable();
                 BindingSource source = new BindingSource();
                 source.DataSource = table;
                 this.dataGridView1.DataSource = source;
@@ -85,6 +99,14 @@ namespace _01UI
             source.DataSource = table;
             this.dataGridView1.DataSource = null;
             this.dataGridView1.DataSource = source;
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            if (EventNewReq != null)
+            {
+                this.EventNewReq.Invoke(sender, new RequireEventArgs() { Title = "新需求" });
+            }
         }
     }
     /// <summary>

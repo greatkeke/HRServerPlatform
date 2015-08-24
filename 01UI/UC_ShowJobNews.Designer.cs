@@ -37,6 +37,7 @@
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.htmlEditor1 = new WinHtmlEditor.HtmlEditor();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             this.tableLayoutPanel1.Controls.Add(this.dtpDate, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.htmlEditor1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnSave, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnDel, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -145,12 +147,23 @@
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSave.Location = new System.Drawing.Point(757, 499);
+            this.btnSave.Location = new System.Drawing.Point(682, 499);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(138, 24);
+            this.btnSave.Size = new System.Drawing.Size(213, 24);
             this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "保存";
+            this.btnSave.Text = "发布";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDel.Location = new System.Drawing.Point(53, 499);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(313, 24);
+            this.btnDel.TabIndex = 8;
+            this.btnDel.Text = "删除";
+            this.btnDel.UseVisualStyleBackColor = true;
             // 
             // UC_ShowJobNews
             // 
@@ -176,5 +189,6 @@
         private System.Windows.Forms.DateTimePicker dtpDate;
         private WinHtmlEditor.HtmlEditor htmlEditor1;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnDel;
     }
 }

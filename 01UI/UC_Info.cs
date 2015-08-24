@@ -20,6 +20,8 @@ namespace _01UI
         {
             InitializeComponent();
             this.AutoSize = true;
+            this.htmlEditor1.ShowToolBar = false;
+            this.htmlEditor1.Enabled = false;
             this.Load += UC_Info_Load;
         }
 
@@ -36,9 +38,7 @@ namespace _01UI
             //展示
             if (loginUser != null)
             {
-                this.htmlEditor1.ShowToolBar = false;
-                this.htmlEditor1.ReadOnly = true;
-                this.htmlEditor1.BodyHtml = loginUser.ShowInfo;
+                this.htmlEditor1.BodyHtml = loginUser.ShowInfo ?? string.Empty;
             }
 
         }
@@ -50,7 +50,7 @@ namespace _01UI
         private void button2_Click(object sender, EventArgs e)
         {
             this.htmlEditor1.ShowToolBar = true;
-            this.htmlEditor1.ReadOnly = false;
+            this.htmlEditor1.Enabled = true;
         }
         /// <summary>
         /// 保存

@@ -12,6 +12,7 @@ namespace _01UI
     {
         BaseBLL<t_Requirement> requireBll = new BaseBLL<t_Requirement>();
         BaseBLL<t_User> userBll = new BaseBLL<t_User>();
+        BaseBLL<t_Orders> ordBll = new BaseBLL<t_Orders>();
         /// <summary>
         /// 展示需求的详细信息
         /// </summary>
@@ -24,6 +25,9 @@ namespace _01UI
         {
             InitializeComponent();
             this.AutoSize = true;
+            this.btnNew.Visible = false;
+            this.button2.Visible = false;
+            this.btnMyOrder.Visible = false;
             this.Load += UC_Require_Load;
             this.dataGridView1.AutoGenerateColumns = false;
             ID.DataPropertyName = "ID";
@@ -33,13 +37,20 @@ namespace _01UI
             Status.DataPropertyName = "Status";
             Gread.DataPropertyName = "Gread";
             CheckPower(Program.loginUserID);
+
         }
 
         private void CheckPower(Guid loginUserID)
         {
-            if (!userBll.GetRoleName(loginUserID).Any(u => u == "企业"))
+            var roles = userBll.GetRoleName(loginUserID);
+            if (roles.Any(u => u == "企业"))
             {
-                //this.btnNew.Visible = false;
+                this.button2.Visible = true;
+                this.btnNew.Visible = true;
+            }
+            if (roles.Any(u => u == "学生"))
+            {
+                this.btnMyOrder.Visible = true;
             }
         }
 
@@ -54,9 +65,9 @@ namespace _01UI
                 source.DataSource = table;
                 this.dataGridView1.DataSource = source;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message, "加载失败~好可惜");
             }
         }
         /// <summary>
@@ -66,16 +77,23 @@ namespace _01UI
         /// <param name="e"></param>
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
-            var rows = this.dataGridView1.SelectedRows;
-            if (rows.Count <= 0) return;
-            var id = rows[0].Cells[0].Value as Guid?;
-            var title = rows[0].Cells["Title"].Value.ToString();
-            if (id != null)
+            try
             {
-                if (this.EvenShowRequirementInfo != null)
+                var rows = this.dataGridView1.SelectedRows;
+                if (rows.Count <= 0) return;
+                var id = rows[0].Cells[0].Value as Guid?;
+                var title = rows[0].Cells["Title"].Value.ToString();
+                if (id != null)
                 {
-                    this.EvenShowRequirementInfo.Invoke(sender, new RequireEventArgs() { ID = id.Value, Title = title });
+                    if (this.EvenShowRequirementInfo != null)
+                    {
+                        this.EvenShowRequirementInfo.Invoke(sender, new RequireEventArgs() { ID = id.Value, Title = title });
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "遭遇故障，暂时看不了了");
             }
 
         }
@@ -94,11 +112,18 @@ namespace _01UI
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            DataTable table = userBll.GetMyRequirement(Program.loginUserID).ConvertToRequireShowModel().OrderByDescending(u => u.PostDate).CopyToDataTable();
-            BindingSource source = new BindingSource();
-            source.DataSource = table;
-            this.dataGridView1.DataSource = null;
-            this.dataGridView1.DataSource = source;
+            try
+            {
+                DataTable table = userBll.GetMyRequirement(Program.loginUserID).ConvertToRequireShowModel().OrderByDescending(u => u.PostDate).CopyToDataTable();
+                BindingSource source = new BindingSource();
+                source.DataSource = table;
+                this.dataGridView1.DataSource = null;
+                this.dataGridView1.DataSource = source;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("前方有高能，请稍后重试");
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -106,6 +131,27 @@ namespace _01UI
             if (EventNewReq != null)
             {
                 this.EventNewReq.Invoke(sender, new RequireEventArgs() { Title = "新需求" });
+            }
+        }
+        /// <summary>
+        /// 我的订单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMyOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var reqs = ordBll.Query(u => u.AchievementID == Program.loginUserID).Select(u => u.RequirementID);
+                var table = requireBll.Query(u => reqs.Contains(u.ID)).ConvertToRequireShowModel().OrderByDescending(u => u.PostDate).CopyToDataTable();
+                BindingSource source = new BindingSource();
+                source.DataSource = table;
+                this.dataGridView1.DataSource = null;
+                this.dataGridView1.DataSource = source;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "遭遇未知情况");
             }
         }
     }

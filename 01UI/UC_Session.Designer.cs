@@ -28,17 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.ChatHistory = new WinHtmlEditor.HtmlEditor();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSend = new System.Windows.Forms.Button();
             this.ChatBox = new WinHtmlEditor.HtmlEditor();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.签约ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.成交ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -58,6 +63,14 @@
             this.splitContainer1.Size = new System.Drawing.Size(1149, 487);
             this.splitContainer1.SplitterDistance = 383;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(383, 487);
+            this.treeView1.TabIndex = 1;
             // 
             // ChatHistory
             // 
@@ -116,13 +129,27 @@
             this.ChatBox.TabIndex = 2;
             this.ChatBox.WebBrowserShortcutsEnabled = true;
             // 
-            // treeView1
+            // contextMenuStrip1
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(383, 487);
-            this.treeView1.TabIndex = 1;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.签约ToolStripMenuItem,
+            this.成交ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            // 
+            // 签约ToolStripMenuItem
+            // 
+            this.签约ToolStripMenuItem.Name = "签约ToolStripMenuItem";
+            this.签约ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.签约ToolStripMenuItem.Text = "签约";
+            this.签约ToolStripMenuItem.Click += new System.EventHandler(this.签约ToolStripMenuItem_Click);
+            // 
+            // 成交ToolStripMenuItem
+            // 
+            this.成交ToolStripMenuItem.Name = "成交ToolStripMenuItem";
+            this.成交ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.成交ToolStripMenuItem.Text = "成交";
+            this.成交ToolStripMenuItem.Click += new System.EventHandler(this.成交ToolStripMenuItem_Click);
             // 
             // UC_Session
             // 
@@ -136,6 +163,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -148,5 +176,8 @@
         private System.Windows.Forms.Button btnSend;
         private WinHtmlEditor.HtmlEditor ChatBox;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 签约ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 成交ToolStripMenuItem;
     }
 }

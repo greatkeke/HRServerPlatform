@@ -51,6 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201508240751522_InitialCreate.cs" />
+    <Compile Include="Migrations\201508240751522_InitialCreate.Designer.cs">
+      <DependentUpon>201508240751522_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508242254479_AddSpeakID.cs" />
+    <Compile Include="Migrations\201508242254479_AddSpeakID.Designer.cs">
+      <DependentUpon>201508242254479_AddSpeakID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508250640499_UpdateTurnoverDate.cs" />
+    <Compile Include="Migrations\201508250640499_UpdateTurnoverDate.Designer.cs">
+      <DependentUpon>201508250640499_UpdateTurnoverDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508250641566_UpdateTurnoverDate1.cs" />
+    <Compile Include="Migrations\201508250641566_UpdateTurnoverDate1.Designer.cs">
+      <DependentUpon>201508250641566_UpdateTurnoverDate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelFactory.cs" />
     <Compile Include="Model1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +79,20 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508240751522_InitialCreate.resx">
+      <DependentUpon>201508240751522_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508242254479_AddSpeakID.resx">
+      <DependentUpon>201508242254479_AddSpeakID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508250640499_UpdateTurnoverDate.resx">
+      <DependentUpon>201508250640499_UpdateTurnoverDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508250641566_UpdateTurnoverDate1.resx">
+      <DependentUpon>201508250641566_UpdateTurnoverDate1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

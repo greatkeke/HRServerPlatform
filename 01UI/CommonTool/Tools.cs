@@ -1,6 +1,9 @@
-﻿using System;
+﻿using _04Model;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -8,7 +11,7 @@ using WinHtmlEditor;
 
 namespace _01UI
 {
-    static class Tools
+    public static class Tools
     {
         /// <summary>
         /// 检查控件的合法性
@@ -45,6 +48,39 @@ namespace _01UI
                 }
             }
             return null;
+        }
+
+        /// <summary>
+        /// 把对象序列化为字节数组
+        /// </summary>
+        public static byte[] SerializeObject(Msg obj)
+        {
+            if (obj == null)
+                return null;
+            MemoryStream ms = new MemoryStream();
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(ms, obj);
+            ms.Position = 0;
+            byte[] bytes = new byte[ms.Length];
+            ms.Read(bytes, 0, bytes.Length);
+            ms.Close();
+            return bytes;
+        }
+
+        /// <summary>
+        /// 把字节数组反序列化成对象
+        /// </summary>
+        public static Msg DeserializeObject(byte[] bytes)
+        {
+            Msg obj = null;
+            if (bytes == null)
+                return obj;
+            MemoryStream ms = new MemoryStream(bytes);
+            ms.Position = 0;
+            BinaryFormatter formatter = new BinaryFormatter();
+            obj = formatter.Deserialize(ms) as Msg;
+            ms.Close();
+            return obj;
         }
     }
 }

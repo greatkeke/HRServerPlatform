@@ -9,4 +9,8 @@ F:\ShellFile\HRServerPlatform\04Model\obj\Debug\04Model.dll
 F:\ShellFile\HRServerPlatform\04Model\obj\Debug\04Model.pdb
 F:\ShellFile\HRServerPlatform\04Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
 F:\ShellFile\HRServerPlatform\04Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
-F:\ShellFile\HRServerPlatform\04Model\obj\Debug\04Model.csprojResolveAssemblyReference.cache
+F:\ShellFile\HRServerPlatform\04Model\obj\Debug\_04Model.Migrations.InitialCreate.resources
+F:\ShellFile\HRServerPlatform\04Model\obj\Debug\04Model.csproj.GenerateResource.Cache
+F:\ShellFile\HRServerPlatform\04Model\obj\Debug\_04Model.Migrations.AddSpeakID.resources
+F:\ShellFile\HRServerPlatform\04Model\obj\Debug\_04Model.Migrations.UpdateTurnoverDate.resources
+F:\ShellFile\HRServerPlatform\04Model\obj\Debug\_04Model.Migrations.UpdateTurnoverDate1.resources

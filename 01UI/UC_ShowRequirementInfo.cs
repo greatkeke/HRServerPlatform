@@ -16,6 +16,8 @@ namespace _01UI
     {
         private t_Requirement requirement;
         private BaseBLL<t_Requirement> bll = new BaseBLL<t_Requirement>();
+        private BaseBLL<t_User> userBll = new BaseBLL<t_User>();
+        private BaseBLL<t_ChatContent> chatBll = new BaseBLL<t_ChatContent>();
         public UC_ShowRequirementInfo()
         {
             InitializeComponent();
@@ -111,41 +113,48 @@ namespace _01UI
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //非法校验
-            var ctl = Tools.CheckIllegalControls(this.tbxTitle, this.cmbCate, this.cmbGread, this.cmbStatus, this.htmlEditor1);
-            if (ctl != null)
+            try
             {
-                ctl.Focus();
-                MessageBox.Show("您还有信息未录入哦！");
-                return;
+                //非法校验
+                var ctl = Tools.CheckIllegalControls(this.tbxTitle, this.cmbCate, this.cmbGread, this.cmbStatus, this.htmlEditor1);
+                if (ctl != null)
+                {
+                    ctl.Focus();
+                    MessageBox.Show("您还有信息未录入哦！");
+                    return;
+                }
+                bool isNew = false;
+                if (requirement == null)
+                {
+                    isNew = true;
+                    requirement = new t_Requirement() { ID = Guid.NewGuid(), PostID = Program.loginUserID };
+                }
+                requirement.Title = this.tbxTitle.Text;
+                requirement.CategoryID = new Guid(this.cmbCate.SelectedValue.ToString());
+                requirement.Gread = this.cmbGread.SelectedIndex;
+                requirement.Status = this.cmbStatus.SelectedIndex;
+                requirement.PostDate = this.dtiDate.Value;
+                requirement.Content = this.htmlEditor1.BodyHtml;
+                if (MessageBox.Show("是否立即发布", "发布?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    requirement.Status = (int)EnumRequireStauts.发布;
+                }
+                else
+                {
+                    requirement.Status = (int)EnumRequireStauts.未发布;
+                }
+                if (isNew ? bll.Add(this.requirement) : bll.Update(this.requirement))
+                {
+                    MessageBox.Show("保存成功", "提示", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("保存失败", "提示", MessageBoxButtons.OK);
+                }
             }
-            bool isNew = false;
-            if (requirement == null)
+            catch (Exception ex)
             {
-                isNew = true;
-                requirement = new t_Requirement() { ID = Guid.NewGuid(), PostID = Program.loginUserID };
-            }
-            requirement.Title = this.tbxTitle.Text;
-            requirement.CategoryID = new Guid(this.cmbCate.SelectedValue.ToString());
-            requirement.Gread = this.cmbGread.SelectedIndex;
-            requirement.Status = this.cmbStatus.SelectedIndex;
-            requirement.PostDate = this.dtiDate.Value;
-            requirement.Content = this.htmlEditor1.BodyHtml;
-            if (MessageBox.Show("是否立即发布", "发布?", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                requirement.Status = (int)EnumRequireStauts.发布;
-            }
-            else
-            {
-                requirement.Status = (int)EnumRequireStauts.未发布;
-            }
-            if (isNew ? bll.Add(this.requirement) : bll.Update(this.requirement))
-            {
-                MessageBox.Show("保存成功", "提示", MessageBoxButtons.OK);
-            }
-            else
-            {
-                MessageBox.Show("保存失败", "提示", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message,"一不小心掉坑里面了");
             }
         }
 
@@ -162,25 +171,42 @@ namespace _01UI
 
         private void btnWant_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("此操作将会展示你的个人信息给对方", "确认竞标", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            try
             {
-                var seBll = new BaseBLL<t_Session>();
-                var session = new t_Session()
+                if (MessageBox.Show("此操作将会展示你的个人信息给对方", "确认竞标", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    ID = Guid.NewGuid(),
-                    AchivementID = Program.loginUserID,
-                    RequireID = this.requirement.PostID,
-                    RequirementID = this.requirement.ID,
-                    SessionDate = DateTime.Now
-                };
-                if (seBll.Add(session))
-                {
-                    MessageBox.Show("已竞标，请静候佳音");
+                    var seBll = new BaseBLL<t_Session>();
+                    var session = new t_Session()
+                    {
+                        ID = Guid.NewGuid(),
+                        AchivementID = Program.loginUserID,
+                        RequireID = this.requirement.PostID,
+                        RequirementID = this.requirement.ID,
+                        SessionDate = DateTime.Now
+                    };
+                    var showinfo = userBll.Query(u => u.ID == Program.loginUserID).Select(u => u.ShowInfo).FirstOrDefault();
+                    var chat = new t_ChatContent()
+                    {
+                        ID = Guid.NewGuid(),
+                        Date = DateTime.Now,
+                        SessionID = session.ID,
+                        SpeakID = Program.loginUserID,
+                        Content = showinfo ?? string.Empty
+                    };
+
+                    if (seBll.Add(session) && chatBll.Add(chat))
+                    {
+                        MessageBox.Show("已竞标，请静候佳音");
+                    }
+                    else
+                    {
+                        MessageBox.Show("啊偶~前方高能预警，请稍后重试");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("啊偶~前方高能预警，请稍后重试");
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "发生位置网络故障，请稍后重试");
             }
         }
     }

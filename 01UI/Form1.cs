@@ -81,7 +81,7 @@ namespace _01UI
 
         private void BtnContact_Click(object sender, EventArgs e)
         {
-            var uc = new UC_Session(Program.loginUserID);
+            var uc = new UC_Session();
             this.ShowPage(uc, "会话", "会话");
         }
         /// <summary>

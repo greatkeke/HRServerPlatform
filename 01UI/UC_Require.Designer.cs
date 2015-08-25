@@ -46,6 +46,7 @@
             this.dataGridViewAutoFilterTextBoxColumn1 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.dataGridViewAutoFilterTextBoxColumn2 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnMyOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -146,6 +147,7 @@
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnNew, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnMyOrder, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -217,6 +219,17 @@
             this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // btnMyOrder
+            // 
+            this.btnMyOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMyOrder.Location = new System.Drawing.Point(172, 339);
+            this.btnMyOrder.Name = "btnMyOrder";
+            this.btnMyOrder.Size = new System.Drawing.Size(163, 24);
+            this.btnMyOrder.TabIndex = 3;
+            this.btnMyOrder.Text = "我的订单";
+            this.btnMyOrder.UseVisualStyleBackColor = true;
+            this.btnMyOrder.Click += new System.EventHandler(this.btnMyOrder_Click);
+            // 
             // UC_Require
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -249,5 +262,6 @@
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn dataGridViewAutoFilterTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnMyOrder;
     }
 }

@@ -51,6 +51,7 @@
         public System.Guid SessionID { get; set; }
         public System.DateTime Date { get; set; }
         public string Content { get; set; }
+        public System.Guid SpeakID { get; set; }
     }
     public partial class t_JobNews
     {
@@ -74,7 +75,7 @@
         public System.Guid RequirementID { get; set; }
         public System.Guid AchievementID { get; set; }
         public System.DateTime OrderDate { get; set; }
-        public System.DateTime TurnoverDate { get; set; }
+        public Nullable<System.DateTime> TurnoverDate { get; set; }
         public Nullable<int> StarNums { get; set; }
         public string Evalute { get; set; }
         public int Status { get; set; }
